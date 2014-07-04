@@ -51,14 +51,15 @@
                 message: opts.message || '',
                 id: selector.slice(1) + '_unhappy'
             };
-            var errorEl = $(error.id).length > 0 ? $(error.id) : getError(error);
+            var noshow = opts.display;
+            var errorEl = $(error.id).length > 0 ? $(error.id) : (noshow == false) ? errorEl = true : getError(error);
             var handleBlur = function handleBlur() {
                 if (!pauseMessages) {
                     field.testValid();
                 } else {
                     $(window).bind('mouseup', field.testValid.bind(this));
                 }
-            };
+            }; 
 
             fields.push(field);
             field.testValid = function testValid(submit) {
@@ -122,3 +123,4 @@
         return this;
     };
 })(this.jQuery || this.Zepto);
+ 
