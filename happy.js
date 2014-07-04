@@ -51,8 +51,8 @@
                 message: opts.message || '',
                 id: selector.slice(1) + '_unhappy'
             };
-            var noshow = opts.display;
-            var errorEl = $(error.id).length > 0 ? $(error.id) : (noshow == false) ? errorEl = true : getError(error);
+            var display = opts.display;
+            var errorEl = $(error.id).length > 0 ? $(error.id) : (display == false) ? errorEl = false : getError(error);
             var handleBlur = function handleBlur() {
                 if (!pauseMessages) {
                     field.testValid();
